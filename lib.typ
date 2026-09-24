@@ -1,6 +1,6 @@
 // This theme is inspired by https://github.com/zbowang/BeamerTheme and https://github.com/touying-typ/touying/blob/main/themes/dewdrop.typ
 
-#import "@preview/touying:0.6.1": *
+#import "@preview/touying:0.8.0": *
 
 #let _typst-builtin-repeat = repeat
 
@@ -22,7 +22,10 @@
     let first-page = sections.at(0).location().page()
     headings = headings.filter(it => it.location().page() >= first-page)
     let slides = query(<touying-metadata>).filter(it => (
-      utils.is-kind(it, "touying-new-slide") and it.location().page() >= first-page
+      it.func() == metadata
+        and type(it.value) == dictionary
+        and it.value.at("kind", default: none) == "touying-new-slide"
+        and it.location().page() >= first-page
     ))
     let current-page = here().page()
     let current-index = sections.filter(it => it.location().page() <= current-page).len() - 1
@@ -439,7 +442,10 @@
     let first-page = sections.at(0).location().page()
     headings = headings.filter(it => it.location().page() >= first-page)
     let slides = query(<touying-metadata>).filter(it => (
-      utils.is-kind(it, "touying-new-slide") and it.location().page() >= first-page
+      it.func() == metadata
+        and type(it.value) == dictionary
+        and it.value.at("kind", default: none) == "touying-new-slide"
+        and it.location().page() >= first-page
     ))
     let current-page = here().page()
     let current-index = sections.filter(it => it.location().page() <= current-page).len() - 1

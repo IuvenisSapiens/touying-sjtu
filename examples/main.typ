@@ -1,5 +1,5 @@
-#import "@preview/touying:0.6.1": *
-#import "@preview/cetz:0.4.2"
+#import "@preview/touying:0.8.0": *
+#import "@preview/cetz:0.5.2"
 #import "@preview/fletcher:0.5.8" as fletcher: edge, node
 #import "../lib.typ": *
 
@@ -24,7 +24,7 @@
 
 #title-slide-red()
 
-#outline-slide()
+#outline-slide(config: config-common(freeze-slide-counter: false))
 
 = Typst 与 Touying
 
